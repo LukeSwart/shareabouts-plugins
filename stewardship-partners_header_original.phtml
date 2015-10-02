@@ -1,0 +1,13 @@
+<img class="alignright size-full wp-image-419" alt="rain-garden-counting-background" src="http://www.12000raingardens.org/wp-content/uploads/2013/07/rain-garden-counting-background.png" width="307" height="66" /><div class="garden-count"><?php mysql_connect("db3.modwest.com", "rgardens", "6CK-ds0BrXc.b9cE") or die(mysql_error());
+mysql_select_db("db12000raingardens") or die(mysql_error());
+$result = mysql_query("SELECT * FROM wp_wpgmza");
+
+$num_rows = mysql_num_rows($result);
+
+if ($num_rows <= 750) {
+$garden_count = 767;
+} else {
+$garden_count = $num_rows;	
+}
+
+echo $garden_count; ?></div>

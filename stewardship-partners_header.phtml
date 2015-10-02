@@ -1,0 +1,22 @@
+<img class="alignright size-full wp-image-419" alt="rain-garden-counting-background" src="http://www.12000raingardens.org/wp-content/uploads/2013/07/rain-garden-counting-background.png" width="307" height="66" />
+
+<div class="garden-count">
+  <?php
+  $json_url = 'http://raingardens-api.heyduwamish.org/api/v2/smartercleanup/datasets/raingardens/places?format=json';
+  // Initializing curl
+  $ch = curl_init( $json_url );
+
+  // Configuring curl options
+  $options = array(
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_HTTPHEADER => array('Content-type: application/json')
+  );
+  // Setting curl options
+  curl_setopt_array( $ch, $options );
+  $result = curl_exec($ch); // Getting jSON result string
+
+  curl_close($ch);
+  $json_result = json_decode($result);
+  echo number_format($json_result->{'metadata'}->{'length'});
+  ?>
+</div>
